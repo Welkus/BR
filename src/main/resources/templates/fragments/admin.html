@@ -9,80 +9,127 @@
 </head>
 <body>
 <div th:fragment="admin">
-  <div class="manage books">
+  <div class="create books">
     <h2>Manage Books</h2>
     <form action="/admin/books/search" method="get">
       <label for="searchBook">Search Book</label>
       <input type="text" name="searchBook" placeholder="Enter book title or author">
       <input type="submit" value="Search">
     </form>
-    <form th:action="${bookAction}" th:method="${bookMethod}" th:object="${bookDto}">
-      <input type="hidden" name="bookId" th:value="${bookDto.id}" th:if="${bookDto.id != null}">
-
+    <form action="/admin/books/create" method="post">
       <label for="bookTitle">Book Title</label>
-      <input type="text" name="bookTitle" th:value="${bookDto.title}" required>
+      <input type="text" name="bookTitle" required>
 
       <label for="bookAuthor">Book Author</label>
-      <input type="text" name="bookAuthor" th:value="${bookDto.author}" required>
+      <input type="text" name="bookAuthor" required>
 
       <label for="ISBN">ISBN</label>
-      <input type="number" name="ISBN" th:value="${bookDto.isbn}" required>
+      <input type="number" name="ISBN" required>
 
       <label for="pages">Pages</label>
-      <input type="number" name="pages" th:value="${bookDto.pages}" required>
+      <input type="number" name="pages" required>
 
       <label for="categoryId">Category</label>
       <select name="categoryId" required>
         <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.category}">Category</option>
       </select>
 
-      <input type="submit" th:value="${bookDto.id != null ? 'Edit Book' : 'Create Book'}">
+      <input type="submit" value="Create Book">
+    </form>
+    <form action="/admin/books/edit" method="post">
+      <label for="bookId">Book ID</label>
+      <input type="number" name="bookId" required>
+
+      <label for="bookTitle">Book Title</label>
+      <input type="text" name="bookTitle" required>
+
+      <label for="bookAuthor">Book Author</label>
+      <input type="text" name="bookAuthor" required>
+
+      <label for="ISBN">ISBN</label>
+      <input type="number" name="ISBN" required>
+
+      <label for="pages">Pages</label>
+      <input type="number" name="pages" required>
+
+      <label for="categoryId">Category</label>
+      <select name="categoryId" required>
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.category}">Category</option>
+      </select>
+
+      <input type="submit" value="Edit Book">
     </form>
   </div>
 
-  <div class="manage categories">
+  <div class="create category">
     <h2>Manage Categories</h2>
     <form action="/admin/categories/search" method="get">
       <label for="searchCategory">Search Category</label>
       <input type="text" name="searchCategory" placeholder="Enter category name">
       <input type="submit" value="Search">
     </form>
-    <form th:action="${categoryAction}" th:method="${categoryMethod}" th:object="${categoryDto}">
-      <input type="hidden" name="categoryId" th:value="${categoryDto.id}" th:if="${categoryDto.id != null}">
+    <form action="/admin/categories/create" method="post">
+      <label for="category">Category Name</label>
+      <input type="text" name="category" required>
+
+      <input type="submit" value="Create Category">
+    </form>
+    <form action="/admin/categories/edit" method="post">
+      <label for="categoryId">Category ID</label>
+      <input type="number" name="categoryId" required>
 
       <label for="categoryName">Category Name</label>
-      <input type="text" name="categoryName" th:value="${categoryDto.name}" required>
+      <input type="text" name="categoryName" required>
 
-      <input type="submit" th:value="${categoryDto.id != null ? 'Edit Category' : 'Create Category'}">
+      <input type="submit" value="Edit Category">
     </form>
   </div>
 
-  <div class="manage users">
+  <div class="create user">
     <h2>Manage Users</h2>
     <form action="/admin/users/search" method="get">
       <label for="searchUser">Search User</label>
       <input type="text" name="searchUser" placeholder="Enter username or email">
       <input type="submit" value="Search">
     </form>
-    <form th:action="${userAction}" th:method="${userMethod}" th:object="${userDto}">
-      <input type="hidden" name="userId" th:value="${userDto.id}" th:if="${userDto.id != null}">
-
+    <form action="/admin/users/create" method="post">
       <label for="username">Username</label>
-      <input type="text" name="username" th:value="${userDto.username}" required>
+      <input type="text" name="username" required>
 
       <label for="email">Email</label>
-      <input type="email" name="email" th:value="${userDto.email}" required>
+      <input type="email" name="email" required>
+
+      <label for="pass">Password</label>
+      <input type="password" name="pass" required>
+
+      <label for="role">Role</label>
+      <select name="role" required>
+        <option value="USER">User</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+
+      <input type="submit" value="Create User">
+    </form>
+    <form action="/admin/users/edit" method="post">
+      <label for="userId">User ID</label>
+      <input type="number" name="userId" required>
+
+      <label for="username">Username</label>
+      <input type="text" name="username" required>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" required>
 
       <label for="password">Password</label>
       <input type="password" name="password">
 
       <label for="role">Role</label>
       <select name="role" required>
-        <option value="USER" th:selected="${userDto.role == 'USER'}">User</option>
-        <option value="ADMIN" th:selected="${userDto.role == 'ADMIN'}">Admin</option>
+        <option value="USER">User</option>
+        <option value="ADMIN">Admin</option>
       </select>
 
-      <input type="submit" th:value="${userDto.id != null ? 'Edit User' : 'Create User'}">
+      <input type="submit" value="Edit User">
     </form>
   </div>
 </div>

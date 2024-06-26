@@ -1,7 +1,6 @@
 package com.manager.br.controller;
 
 import com.manager.br.dto.BookDto;
-import com.manager.br.dto.CategoryDto;
 import com.manager.br.dto.UserDto;
 import com.manager.br.service.BookService;
 import com.manager.br.service.CategoryService;
