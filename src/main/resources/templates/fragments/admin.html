@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:fragment="admin">
+  <div class="manage books">
+    <h2>Manage Books</h2>
+    <form action="/admin/books/search" method="get">
+      <label for="searchBook">Search Book</label>
+      <input type="text" name="searchBook" placeholder="Enter book title or author">
+      <input type="submit" value="Search">
+    </form>
+    <form th:action="${bookAction}" th:method="${bookMethod}" th:object="${bookDto}">
+      <input type="hidden" name="bookId" th:value="${bookDto.id}" th:if="${bookDto.id != null}">
+
+      <label for="bookTitle">Book Title</label>
+      <input type="text" name="bookTitle" th:value="${bookDto.title}" required>
+
+      <label for="bookAuthor">Book Author</label>
+      <input type="text" name="bookAuthor" th:value="${bookDto.author}" required>
+
+      <label for="ISBN">ISBN</label>
+      <input type="number" name="ISBN" th:value="${bookDto.isbn}" required>
+
+      <label for="pages">Pages</label>
+      <input type="number" name="pages" th:value="${bookDto.pages}" required>
+
+      <label for="categoryId">Category</label>
+      <select name="categoryId" required>
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.category}">Category</option>
+      </select>
+
+      <input type="submit" th:value="${bookDto.id != null ? 'Edit Book' : 'Create Book'}">
+    </form>
+  </div>
+
+  <div class="manage categories">
+    <h2>Manage Categories</h2>
+    <form action="/admin/categories/search" method="get">
+      <label for="searchCategory">Search Category</label>
+      <input type="text" name="searchCategory" placeholder="Enter category name">
+      <input type="submit" value="Search">
+    </form>
+    <form th:action="${categoryAction}" th:method="${categoryMethod}" th:object="${categoryDto}">
+      <input type="hidden" name="categoryId" th:value="${categoryDto.id}" th:if="${categoryDto.id != null}">
+
+      <label for="categoryName">Category Name</label>
+      <input type="text" name="categoryName" th:value="${categoryDto.name}" required>
+
+      <input type="submit" th:value="${categoryDto.id != null ? 'Edit Category' : 'Create Category'}">
+    </form>
+  </div>
+
+  <div class="manage users">
+    <h2>Manage Users</h2>
+    <form action="/admin/users/search" method="get">
+      <label for="searchUser">Search User</label>
+      <input type="text" name="searchUser" placeholder="Enter username or email">
+      <input type="submit" value="Search">
+    </form>
+    <form th:action="${userAction}" th:method="${userMethod}" th:object="${userDto}">
+      <input type="hidden" name="userId" th:value="${userDto.id}" th:if="${userDto.id != null}">
+
+      <label for="username">Username</label>
+      <input type="text" name="username" th:value="${userDto.username}" required>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" th:value="${userDto.email}" required>
+
+      <label for="password">Password</label>
+      <input type="password" name="password">
+
+      <label for="role">Role</label>
+      <select name="role" required>
+        <option value="USER" th:selected="${userDto.role == 'USER'}">User</option>
+        <option value="ADMIN" th:selected="${userDto.role == 'ADMIN'}">Admin</option>
+      </select>
+
+      <input type="submit" th:value="${userDto.id != null ? 'Edit User' : 'Create User'}">
+    </form>
+  </div>
+</div>
+</body>
+</html>

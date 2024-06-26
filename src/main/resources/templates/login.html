@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+<div class="form-container">
+    <h1>Log in to Book Reviewer</h1>
+    <form action="/login" method="post">
+        <label for="username">User name</label>
+        <input type="text" name="username" required>
+
+        <label for="pass">Password</label>
+        <input type="password" name="pass" required>
+
+        <input type="submit" value="Log in" name="loginButton">
+    </form>
+    <div th:if="${message != null}" class="form-message" th:style="${messageStyle}" th:text="${message}"></div>
+    <div class="create-account-link">
+        <a href="create">Create account Now!</a>
+    </div>
+</div>
+</body>
+</html>

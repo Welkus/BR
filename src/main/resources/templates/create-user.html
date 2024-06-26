@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+<div class="form-container">
+  <h1>Create an account</h1>
+  <form action="/create" method="post">
+    <label for="username">Choose username</label>
+    <input type="text" name="username" required>
+
+    <label for="email">Email</label>
+    <input type="text" name="email" required>
+
+    <label for="pass">Password</label>
+    <input type="password" name="pass" required>
+
+    <label for="confirmPass">Confirm password</label>
+    <input type="password" name="confirmPass" required>
+
+    <input type="submit" value="Create" name="create">
+  </form>
+  <div th:if="${message != null}" class="form-message" th:style="${messageStyle}" th:text="${message}"></div>
+</div>
+</body>
+</html>

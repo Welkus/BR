@@ -1,0 +1,50 @@
+.create {
+    margin: 20px 0;
+}
+
+.create h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.create form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.create form label {
+    font-weight: bold;
+    text-align: left;
+}
+
+.create form input[type="text"],
+.create form input[type="email"],
+.create form input[type="password"],
+.create form input[type="number"],
+.create form select {
+    padding: 8px;
+    border: 1px solid var(--light-grey);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.create form input[type="submit"] {
+    padding: 10px;
+    background: var(--violet);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.create form input[type="submit"]:hover {
+    background: var(--dark-violet);
+}

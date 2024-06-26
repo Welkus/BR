@@ -1,0 +1,115 @@
+/* RESET/BASIC STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+:root {
+    --white: #ffffff;
+    --light-grey: #edf0f1;
+    --violet: #655be1;
+    --dark-violet: #5146e1;
+    --black: #21232a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    text-align: center;
+    background: var(--light-grey);
+    color: var(--black);
+}
+
+.notification {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background: var(--violet);
+}
+
+/* MAIN STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: var(--white);
+    box-shadow: rgb(50 50 93 / 10%) 0 30px 60px -12px, rgb(0 0 0 / 15%) 0 18px 36px -18px;
+    z-index: 1000;
+}
+
+.nav [type="checkbox"] {
+    display: none;
+}
+
+.nav [type="checkbox"] + label {
+    display: none; /* Hide the menu toggle for desktop view */
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu li {
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.menu li:hover {
+    transform: translateY(-5px);
+}
+
+.menu li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: var(--violet);
+    color: var(--white);
+    transition: background 0.3s;
+}
+
+.menu li a:hover {
+    background: var(--dark-violet);
+}
+
+.menu li a span {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* FOOTER STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-footer {
+    position: fixed;
+    right: 0;
+    bottom: 60px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    color: var(--black);
+}
+
+.page-footer a {
+    display: flex;
+    margin-left: 4px;
+}
