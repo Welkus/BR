@@ -7,12 +7,10 @@
 </head>
 <body>
 <div>
-    <nav th:replace="fragments/nav :: navigation"></nav>
-
-    <main th:replace="${contentFragment}"></main>
-
+    <nav th:replace="~{fragments/nav :: navigation}"></nav>
+    <main th:replace="~{${contentFragment}}"></main>
     <p class="notification">Click on the Menu</p>
-    <footer class="page-footer" th:replace="fragments/footer :: footer"></footer>
+    <footer class="page-footer" th:replace="~{fragments/footer :: footer}"></footer>
 </div>
 </body>
 </html>

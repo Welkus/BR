@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Categories</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<div th:fragment="category">
+    <div class="create category">
+        <h2>Manage Categories</h2>
+        <form action="/admin/categories/search" method="get">
+            <label for="searchCategory">Search Category</label>
+            <input type="text" name="searchCategory" placeholder="Enter category name">
+            <input type="submit" value="Search">
+        </form>
+        <form action="/admin/categories/create" method="post">
+            <label for="category">Category Name</label>
+            <input type="text" name="category" required>
+            <input type="submit" value="Create Category">
+        </form>
+        <form action="/admin/categories/edit" method="post">
+            <label for="categoryId">Category ID</label>
+            <input type="number" name="categoryId" required>
+            <label for="categoryName">Category Name</label>
+            <input type="text" name="categoryName" required>
+            <input type="submit" value="Edit Category">
+        </form>
+    </div>
+</div>
+</body>
+</html>

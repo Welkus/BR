@@ -19,21 +19,9 @@ public class HomeController {
 
     @GetMapping
     public String homeInformation(Model model, HttpSession session){
-        // Assuming the 'roles' attribute is already set as a List<String> in the session
-        List<String> roles = (List<String>) session.getAttribute("roles");
-
-        // If roles are not present, get them using the userService (assuming a username is present in session)
-        if (roles == null) {
-            String username = (String) session.getAttribute("username");
-            if (username != null) {
-                roles = userService.getUserRole(username);
-                session.setAttribute("roles", roles);
-            }
-        }
 
         model.addAttribute("title", "Home Page");
         model.addAttribute("contentFragment", "fragments/home");
-        model.addAttribute("roles", roles); // Adding roles to the model for Thymeleaf
 
         return "dashboard";
     }

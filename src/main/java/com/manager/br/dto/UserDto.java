@@ -1,5 +1,6 @@
 package com.manager.br.dto;
 
+import com.manager.br.util.Roles;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,4 +12,5 @@ public class UserDto {
     private String email;
     private String pass;
     private String confirmPass;
+    private Roles role;
 }

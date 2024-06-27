@@ -19,13 +19,6 @@ public class DashboardController {
             return "redirect:/login";
         }
 
-        @SuppressWarnings("unchecked")
-        List<String> roles = (List<String>) session.getAttribute("roles");
-        roles.forEach(System.out::println);
-        if (roles == null) {
-            roles = Collections.emptyList(); // Initialize roles to an empty list if null
-        }
-        model.addAttribute("roles", roles);
         model.addAttribute("title", "Dashboard");
         model.addAttribute("contentFragment", "fragments/home");
         return "dashboard";

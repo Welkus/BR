@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<div th:fragment="user">
+    <div class="create user">
+        <h2>Manage Users</h2>
+        <form action="/admin/users/search" method="get">
+            <label for="searchUser">Search User</label>
+            <input type="text" name="searchUser" placeholder="Enter username or email">
+            <input type="submit" value="Search">
+        </form>
+        <form action="/admin/users/create" method="post">
+            <label for="username">Username</label>
+            <input type="text" name="username" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" required>
+            <label for="pass">Password</label>
+            <input type="password" name="pass" required>
+            <label for="role">Role</label>
+            <select name="role" required>
+                <option value="USER">User</option>
+                <option value="ADMIN">Admin</option>
+            </select>
+            <input type="submit" value="Create User">
+        </form>
+        <form action="/admin/users/edit" method="post">
+            <label for="userId">User ID</label>
+            <input type="number" name="userId" required>
+            <label for="username">Username</label>
+            <input type="text" name="username" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" required>
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            <label for="role">Role</label>
+            <select name="role" required>
+                <option value="USER">User</option>
+                <option value="ADMIN">Admin</option>
+            </select>
+            <input type="submit" value="Edit User">
+        </form>
+    </div>
+</div>
+</body>
+</html>

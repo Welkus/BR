@@ -97,6 +97,60 @@ body {
     font-weight: bold;
 }
 
+/* Dropdown Styles */
+.menu .dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--white);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    list-style: none;
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.menu .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.menu .dropdown-menu li a {
+    padding: 10px 20px;
+    background: var(--white);
+    color: var(--black);
+    display: block;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.menu .dropdown-menu li a:hover {
+    background: var(--light-grey);
+}
+
+/* Unclickable Admin Button */
+.menu li a.unclickable {
+    pointer-events: none;
+    cursor: default;
+    background: var(--violet);
+}
+
+.menu li a.unclickable:hover {
+    background: var(--dark-violet);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--dark-violet);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(101, 91, 225, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(101, 91, 225, 0);
+    }
+}
+
 /* FOOTER STYLES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .page-footer {

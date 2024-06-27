@@ -28,51 +28,62 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public String getAdminPage(Model model, HttpSession session) {
-        List<String> roles = (List<String>) session.getAttribute("roles");
-        if (roles == null) {
-            String username = (String) session.getAttribute("username");
-            if (username != null) {
-                roles = userService.getUserRole(username);
-                session.setAttribute("roles", roles);
-            }
-        }
-
-        model.addAttribute("roles", roles);
-
-
+    @GetMapping("/books")
+    public String getBooksPage(Model model) {
         List<CategoryModel> categories = categoryService.getAllCategories();
         model.addAttribute("categories", categories);
-        model.addAttribute("contentFragment", "fragments/admin");
-        model.addAttribute("title", "Admin Dashboard");
-
+        model.addAttribute("title", "Manage Books");
+        model.addAttribute("contentFragment", "fragments/admin/books-admin");
         return "dashboard";
     }
-
-
 
     @PostMapping("/books/create")
     public String createBook(@ModelAttribute BookDto bookDto) {
         bookService.createBook(bookDto);
-        return "redirect:/admin";
+        return "redirect:/admin/books";
     }
 
     @PostMapping("/books/edit")
     public String editBook(@RequestParam long bookId, @ModelAttribute BookDto bookDto) {
         bookService.editBook(bookId, bookDto);
-        return "redirect:/admin";
+        return "redirect:/admin/books";
+    }
+
+    @GetMapping("/categories")
+    public String getCategoriesPage(Model model) {
+        model.addAttribute("title", "Manage Categories");
+        model.addAttribute("contentFragment", "fragments/admin/category :: category");
+        return "dashboard";
     }
 
     @PostMapping("/categories/create")
     public String createCategory(@RequestParam String category) {
         categoryService.createCategory(category);
-        return "redirect:/admin";
+        return "redirect:/admin/categories";
+    }
+
+    @PostMapping("/categories/edit")
+    public String editCategory(@RequestParam long categoryId, @RequestParam String categoryName) {
+        categoryService.editCategory(categoryId, categoryName);
+        return "redirect:/admin/categories";
+    }
+
+    @GetMapping("/users")
+    public String getUsersPage(Model model) {
+        model.addAttribute("title", "Manage Users");
+        model.addAttribute("contentFragment", "fragments/admin/user :: user");
+        return "dashboard";
     }
 
     @PostMapping("/users/create")
     public String createUser(@ModelAttribute UserDto userDto, @RequestParam Roles role) {
         userService.createUser(userDto, role);
-        return "redirect:/admin";
+        return "redirect:/admin/users";
+    }
+
+    @PostMapping("/users/edit")
+    public String editUser(@RequestParam long userId, @ModelAttribute UserDto userDto) {
+        userService.editUser(userId, userDto);
+        return "redirect:/admin/users";
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -23,4 +24,14 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
+    public void editCategory(long categoryId, String categoryName) {
+        Optional<CategoryModel> optionalCategory = categoryRepository.findById(categoryId);
+        if (optionalCategory.isPresent()) {
+            CategoryModel category = optionalCategory.get();
+            category.setCategory(categoryName);
+            categoryRepository.save(category);
+        } else {
+            throw new IllegalArgumentException("Category with ID " + categoryId + " not found");
+        }
+    }
 }

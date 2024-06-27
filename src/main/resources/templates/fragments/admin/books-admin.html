@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Books</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<div th:fragment="books-admin">
+  <div class="create books">
+    <h2>Manage Books</h2>
+    <form action="/admin/books/search" method="get">
+      <label for="searchBook">Search Book</label>
+      <input type="text" name="searchBook" placeholder="Enter book title or author">
+      <input type="submit" value="Search">
+    </form>
+    <form action="/admin/books/create" method="post">
+      <label for="bookTitle">Book Title</label>
+      <input type="text" name="bookTitle" required>
+
+      <label for="bookAuthor">Book Author</label>
+      <input type="text" name="bookAuthor" required>
+
+      <label for="ISBN">ISBN</label>
+      <input type="number" name="ISBN" required>
+
+      <label for="pages">Pages</label>
+      <input type="number" name="pages" required>
+
+      <label for="categoryId">Category</label>
+      <select name="categoryId" required>
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.category}">Category</option>
+      </select>
+
+      <input type="submit" value="Create Book">
+    </form>
+    <form action="/admin/books/edit" method="post">
+      <label for="bookId">Book ID</label>
+      <input type="number" name="bookId" required>
+
+      <label for="bookTitle">Book Title</label>
+      <input type="text" name="bookTitle" required>
+
+      <label for="bookAuthor">Book Author</label>
+      <input type="text" name="bookAuthor" required>
+
+      <label for="ISBN">ISBN</label>
+      <input type="number" name="ISBN" required>
+
+      <label for="pages">Pages</label>
+      <input type="number" name="pages" required>
+
+      <label for="categoryId">Category</label>
+      <select name="categoryId" required>
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.category}">Category</option>
+      </select>
+
+      <input type="submit" value="Edit Book">
+    </form>
+  </div>
+</div>
+</body>
+</html>

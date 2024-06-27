@@ -36,8 +36,6 @@ public class LogInController {
 
         if (logInService.isPassValid(userName, pass)){
             session.setAttribute("username", userName);
-            List<String>roles = userService.getUserRole(userName);
-            session.setAttribute("roles", roles);
             model.addAttribute("title", "Home Page");
             model.addAttribute("contentFragment", "fragments/home");
             return "redirect:/dashboard";
